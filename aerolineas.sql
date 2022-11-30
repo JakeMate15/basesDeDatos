@@ -275,3 +275,6 @@ ALTER TABLE Aerolinea ADD CONSTRAINT FK_Aerolinea_Direccion FOREIGN KEY(direccio
 REFERENCES Direccion(direccionId)
 
 SP_HELP(Aerolinea)
+
+--Ver las tablas creadas
+SELECT * FROM SYS.OBJECTS WHERE TYPE = 'F'
