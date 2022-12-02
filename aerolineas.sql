@@ -278,3 +278,9 @@ SP_HELP(Aerolinea)
 
 --Ver las tablas creadas
 SELECT * FROM SYS.OBJECTS WHERE TYPE = 'F'
+
+SELECT * FROM Direccion
+INSERT INTO Direccion VALUES('dfsfa','fdsdf','nc','57896')
+
+SELECT * FROM PERSONA
+INSERT INTO Persona VALUES('Edgardo','Hernandez',NULL ,2,'77569856328',GETDATE(),1)
