@@ -193,3 +193,13 @@ SET IDENTITY_INSERT VueloEmpleado OFF
 
 --Primeros 5
 select top 5 * from persona
+select COUNT()
+
+--oRDENAR BAJO UN atrubuto
+select * from persona ORDER BY nombre
+select * from persona ORDER BY materno,nombre desc --descendente 
+select * from persona ORDER BY nacimiento desc
+
+SELECT TOP 5 nombre,sexo from Persona
+
+SELECT nombre from Persona where sexo = 1
