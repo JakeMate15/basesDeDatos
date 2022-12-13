@@ -130,5 +130,76 @@ SELECT DAY(GETDATE())
 SELECT YEAR(GETDATE())
 
 --LISTAR a todos los empleados que su fecha de ingreso sea dle 2010 para atras
-SELECT idEmpleado, Nombre, paterno, materno, fechaIngreso From Persona p, empleado e
+--Falso join
+SELECT idEmpleado, Nombre,fechaIngreso From Persona p, empleado e
 where p.idPersona = e.idPersona and YEAR(e.fechaIngreso)<=2010
+
+--Join
+SELECT idEmpleado, Nombre, fechaIngreso 
+from persona join empleado
+on Persona.idPersona=empleado.idPersona
+where year(fechaIngreso)<=2010
+
+
+-- SELECCIONAR TODOS LOS CLIENTES HOMBRES QUE SE REGITRARON entre enero y septiembre del 2014
+SELECT NOMBRE + ' ' + PATERNO + ' ' + ISNULL(materno,''),sexo FROM Persona where sexo = 0
+
+SELECT persona.nombre + ' ' + paterno + ' ' + ISNULL(materno,''), persona.sexo
+from persona join Cliente
+on persona.idPersona = Cliente.personaId
+where sexo=0 and month(fechaRegistro) BETWEEN 1 and 8
+
+
+--Uso de la instruccion EXISTS devuelve kun tipo booleano (FALSO/VERDADER)
+--select * from Persona
+SELECT p.Nombre, p.Paterno
+FROM Persona AS p
+WHERE EXISTS
+(select *
+    FROM Empleado AS e
+    WHERE p.idPersona = e.IdePersona
+    AND p.paterno = 'Lara'
+)
+
+INSERT Persona (nombre,paterno,materno,direccionId,telefono,nacimiento,sexo) VALUES (N'Gabriela',N'Lara',N'Segoviano',2,N'5564298736',CAST(N'1992-08-13T00:00:00.000'AS DateTime),1)
+
+--INSERTAMOS EL PUESTO DIRECTOR DE OPERACIONES en tipo empleado
+SELECT * FROM TipoEmpleado
+
+
+SET IDENTITY_INSERT TipoEmpleado ON 
+    INSERT TipoEmpleado (idTipoEmpleado, tipoEmpleado, sueldoMaximo, esDeVuelo) VALUES (2, N'Director de operaciones', 65000.000,0)
+SET IDENTITY_INSERT TipoEmpleado OFF
+
+INSERT PERSONA (nombre, paterno, materno, direccionId,telefono,nacimiento,sexo) VALUES (N'EmilianO',N'Chacon',N'Tabouda',17,N'556427896542',CAST(N'1990-08-13T00:00:00.000'AS DateTime),0)
+
+-- Insertamos a emilianO a la tabla de empleados
+SET IDENTITY_INSERT Empleado ON
+    INSERT Empleado(idPersona,idEmpleado,idTipoEmpleado,AerolineaId,fechaIngreso,sueldo,idJefe)
+    VALUES (26,7,2,5,CAST(N'2000-08-13T00:00:00.000'AS DateTime),60000.0000,NULL)
+SET IDENTITY_INSERT Empleado OFF
+
+
+-- iNSERTAMOS A GABRIELA EN LA TABLA EMPLEADOS
+    SET IDENTITY_INSERT Empleado ON
+        INSERT Empleado(idPersona,idEmpleado,idTipoEmpleado,AerolineaId,fechaIngreso,sueldo,idJefe)
+        VALUES (25,11,5,5,CAST(N'2005-08-13T00:00:00.000'AS DateTime),49658.0000,7)
+    SET IDENTITY_INSERT Empleado OFF
+
+-- dateadd()
+-- agrega un valor a una fecha indicada
+select idPersona,nombre,nacimiento, dateadd(dd,7,nacimiento) as 'Nueva fechar'
+from persona
+
+
+--DATEDIFF()
+-- Devuelve el numero de unidades departe de la fecha entre la fecha inicial y la final
+SELECT matricula, idTipoAvion,fechaFabricacion,
+DATEDIFF(dd,fechaFabricacion,GETDATE()) as
+'TIEMPO DE VIDA' From Avion
+
+
+-- DATENAME()
+-- Devuel la fecha con algun formate
+SELECT NOMBRE, nacimiento, DATENAME(dw,nacimiento) as 'Parte de fecha' FROM Persona
+SELECT NOMBRE, nacimiento, DATENAME(dd,nacimiento) as 'Parte de fecha' FROM Persona

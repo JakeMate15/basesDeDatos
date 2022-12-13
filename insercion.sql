@@ -30,6 +30,8 @@ INSERT Direccion (calle, numero, colonia, codigoPostal) VALUES (N'Álvaro Obreg�
 INSERT Direccion (calle, numero, colonia, codigoPostal) VALUES (N'Av. Congreso de la Unión', N'123', N'El Parque', N'15960')
 INSERT Direccion (calle, numero, colonia, codigoPostal) VALUES (N'Luis Moya', N'12', N'Centro', N'06070')
 INSERT Direccion (calle, numero, colonia, codigoPostal) VALUES (N'Blvd. Miguel de Cervantes Saavedra', N'384', N'Ampliación Granada', N'11529')
+INSERT Direccion (calle, numero, colonia, codigoPostal) VALUES (N'Avenida General Felipe Angeles', N'594', N'Santa Cruz', N'42640')
+INSERT Direccion (calle, numero, colonia, codigoPostal) VALUES (N'Cerrada Gomez Farias', N'594', N'SSan Salvador', N'42646')
 
 --SELECT * FROM PERSONA
 INSERT Persona (nombre, paterno, materno, direccionId, telefono, nacimiento, sexo) VALUES (N'Edgardo', N'Hernández', N'Madrigal', 2, N'5561283734', CAST(N'1980-08-30T00:00:00.000' AS DateTime), 0)
@@ -50,9 +52,8 @@ INSERT Persona (nombre, paterno, materno, direccionId, telefono, nacimiento, sex
 INSERT Persona (nombre, paterno, materno, direccionId, telefono, nacimiento, sexo) VALUES (N'Laura', N'Escobar', N'Campos', 18, N'52341678', CAST(N'1992-09-29T00:00:00.000' AS DateTime), 1)
 INSERT Persona (nombre, paterno, materno, direccionId, telefono, nacimiento, sexo) VALUES (N'Martín', N'Carmona', N'Bautista', 19, N'23633162', CAST(N'1959-03-05T00:00:00.000' AS DateTime), 0)
 INSERT Persona (nombre, paterno, materno, direccionId, telefono, nacimiento, sexo) VALUES (N'Nubia', N'García', NULL, 20, N'53679754', CAST(N'1982-12-30T00:00:00.000' AS DateTime), 1)
---no esta la direccion 22
---INSERT Persona (nombre, paterno, materno, direccionId, telefono, nacimiento, sexo) VALUES (N'Victor', N'Sandoval', N'Escudero', 21, N'53678234', CAST(N'1980-03-09T00:00:00.000' AS DateTime), 0)
---INSERT Persona (nombre, paterno, materno, direccionId, telefono, nacimiento, sexo) VALUES (N'Yuridia', N'Salazar', N'Figueroa', 22, N'23497543', CAST(N'1978-11-09T00:00:00.000' AS DateTime), 1)
+INSERT Persona (nombre, paterno, materno, direccionId, telefono, nacimiento, sexo) VALUES (N'Victor', N'Sandoval', N'Escudero', 21, N'53678234', CAST(N'1980-03-09T00:00:00.000' AS DateTime), 0)
+INSERT Persona (nombre, paterno, materno, direccionId, telefono, nacimiento, sexo) VALUES (N'Yuridia', N'Salazar', N'Figueroa', 22, N'23497543', CAST(N'1978-11-09T00:00:00.000' AS DateTime), 1)
 
 
 --Para insertar con un id personalizado no incrementosa automaticos
@@ -169,9 +170,11 @@ SET IDENTITY_INSERT TipoEmpleado OFF
 
 
 SET IDENTITY_INSERT Empleado ON 
---INSERT Empleado (idEmpleado, idPersona, idTipoEmpleado, AerolineaId, fechaIngreso, sueldo, idJefe) VALUES (1, 4, 1, 3, CAST(N'2010-07-30T00:00:00.000' AS DateTime), 47500.0000, 5)
---INSERT Empleado (idEmpleado, idPersona, idTipoEmpleado, AerolineaId, fechaIngreso, sueldo, idJefe) VALUES (2, 17, 1, 4, CAST(N'2011-12-10T00:00:00.000' AS DateTime), 39050.0000, 6)
---INSERT Empleado (idEmpleado, idPersona, idTipoEmpleado, AerolineaId, fechaIngreso, sueldo, idJefe) VALUES (3, 19, 1, 5, CAST(N'2010-01-01T00:00:00.000' AS DateTime), 40000.0000, 7)
+
+INSERT Empleado (idEmpleado, idPersona, idTipoEmpleado, AerolineaId, fechaIngreso, sueldo, idJefe) VALUES (1, 4, 1, 3, CAST(N'2010-07-30T00:00:00.000' AS DateTime), 47500.0000, 5)
+INSERT Empleado (idEmpleado, idPersona, idTipoEmpleado, AerolineaId, fechaIngreso, sueldo, idJefe) VALUES (2, 17, 1, 4, CAST(N'2011-12-10T00:00:00.000' AS DateTime), 39050.0000, 6)
+INSERT Empleado (idEmpleado, idPersona, idTipoEmpleado, AerolineaId, fechaIngreso, sueldo, idJefe) VALUES (3, 19, 1, 5, CAST(N'2010-01-01T00:00:00.000' AS DateTime), 40000.0000, 7)
+
 INSERT Empleado (idEmpleado, idPersona, idTipoEmpleado, AerolineaId, fechaIngreso, sueldo, idJefe) VALUES (5, 13, 5, 3, CAST(N'2008-09-07T00:00:00.000' AS DateTime), 45700.0000, NULL)
 INSERT Empleado (idEmpleado, idPersona, idTipoEmpleado, AerolineaId, fechaIngreso, sueldo, idJefe) VALUES (6, 14, 5, 4, CAST(N'2008-01-01T00:00:00.000' AS DateTime), 49200.0000, NULL)
 --INSERT Empleado (idEmpleado, idPersona, idTipoEmpleado, AerolineaId, fechaIngreso, sueldo, idJefe) VALUES (7, 20, 5, 5, CAST(N'2005-11-15T00:00:00.000' AS DateTime), 45900.0000, NULL)
